@@ -1,0 +1,7 @@
+{
+  "name": "MegaPuertaSpace",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
