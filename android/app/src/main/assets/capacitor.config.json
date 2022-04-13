@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "MegaPuertaSpace",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
