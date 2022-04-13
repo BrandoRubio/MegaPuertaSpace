@@ -1,17 +1,101 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Inicio
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content fullscreen>
+  <ion-list>
+    <ion-list-header><h1>Puertas</h1></ion-list-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="../../assets/door_opened.png" />
+        </ion-avatar>
+        <ion-label>
+          <h2>Puerta 1</h2>
+          <ion-text color="{{colorP1}}">
+            <h3>{{estado1}}</h3>
+          </ion-text>
+        </ion-label>
+        <ion-button color="success">Abrir</ion-button>
+      </ion-item>
+      <ion-item-options side="start">
+        <ion-item-option color="primary">Abrir y Cerrar</ion-item-option>
+      </ion-item-options>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">Cerrar</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="../../assets/door_opened.png" />
+        </ion-avatar>
+        <ion-label>
+          <h2>Puerta 2</h2>
+          <ion-text color="{{colorP3}}">
+            <h3>{{estado2}}</h3>
+          </ion-text>
+        </ion-label>
+        <ion-button color="success">Abrir</ion-button>
+      </ion-item>
+      <ion-item-options side="start">
+        <ion-item-option color="primary">Abrir y Cerrar</ion-item-option>
+      </ion-item-options>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">Cerrar</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="../../assets/door_opened.png" />
+        </ion-avatar>
+        <ion-label>
+          <h2>Puerta 3</h2>
+          <ion-text color="{{colorP3}}">
+            <h3>{{estado3}}</h3>
+          </ion-text>
+        </ion-label>
+        <ion-button color="success">Abrir</ion-button>
+      </ion-item>
+      <ion-item-options side="start">
+        <ion-item-option color="primary">Abrir y Cerrar</ion-item-option>
+      </ion-item-options>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">Cerrar</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="../../assets/door_opened.png" />
+        </ion-avatar>
+        <ion-label>
+          <h2>Puerta 4</h2>
+          <ion-text color="{{colorP4}}">
+            <h3>{{estado4}}</h3>
+          </ion-text>
+        </ion-label>
+        <ion-button color="success">Abrir</ion-button>
+      </ion-item>
+      <ion-item-options side="start">
+        <ion-item-option color="primary">Abrir y Cerrar</ion-item-option>
+      </ion-item-options>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">Cerrar</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
