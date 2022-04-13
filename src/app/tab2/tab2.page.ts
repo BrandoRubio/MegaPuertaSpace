@@ -26,26 +26,27 @@ export class Tab2Page {
   saveIP4(ip){
     console.log(ip);
   }
+
   ionViewDidEnter() {
     this.storage.get('ippuerta1').then(res => {
       this.ipPuerta1 = res;
-    })
+    });
     this.storage.get('ippuerta2').then(res => {
       this.ipPuerta2 = res;
-    })
+    });
     this.storage.get('ippuerta3').then(res => {
       this.ipPuerta3 = res;
-    })
+    });
     this.storage.get('ippuerta4').then(res => {
       this.ipPuerta4 = res;
-    })
+    });
   }
 
   ionViewDidLeave() {
-    this.storage.set('ippuerta1', this.ipPuerta1)
-    this.storage.set('ippuerta2', this.ipPuerta2)
-    this.storage.set('ippuerta3', this.ipPuerta3)
-    this.storage.set('ippuerta4', this.ipPuerta4)
+    this.storage.set('ippuerta1', this.ipPuerta1);
+    this.storage.set('ippuerta2', this.ipPuerta2);
+    this.storage.set('ippuerta3', this.ipPuerta3);
+    this.storage.set('ippuerta4', this.ipPuerta4);
   }
 
 }
