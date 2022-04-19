@@ -1,17 +1,72 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
+<ion-header translucent>
+  <ion-toolbar color="primary">
+    <ion-title size="large">
       Acerca de...
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="alert-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <img src="../../assets/condor.png" />
+    <ion-card-header>
+      <ion-card-subtitle>Desarrollador por</ion-card-subtitle>
+      <ion-card-title>CONDOR INNOVATION & SOLUTIONS RUBIO RUIZ Y COMPAÑIA</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      INGENIERÍA CONDOR es una empresa líder en Soluciones de Tecnología de la Información.
+    </ion-card-content>
+  </ion-card>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-fab horizontal="start" vertical="bottom" slot="fixed">
+    <ion-fab-button color="light">
+      <ion-icon name="share"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="primary">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="end">
+      <ion-fab-button color="danger">
+        <ion-icon name="navigate-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="bottom">
+      <ion-fab-button color="secondary">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="start">
+      <ion-fab-button color="warning">
+        <ion-icon name="globe-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <ion-fab horizontal="start" vertical="bottom" slot="fixed">
+    <ion-fab-button color="tertiary"><ion-icon name="share-social-outline"></ion-icon></ion-fab-button>
+    <ion-fab-list side="end">
+      <ion-fab-button color="medium" (click)="openCondorPage()">
+        <ion-icon name="globe-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="danger" (click)="openYoutubeCondorPage()">
+        <ion-icon name="logo-youtube"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="primary" (click)="openFacebookCondorPage()">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="warning" (click)="openInstragramCondorPage()">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="success" (click)="openLocationCondor()">
+        <ion-icon name="navigate-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

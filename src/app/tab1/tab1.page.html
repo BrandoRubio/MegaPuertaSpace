@@ -1,34 +1,34 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
+<ion-header translucent>
+  <ion-toolbar color="primary">
+    <ion-title size="large">
       Inicio
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
   <ion-list>
-    <ion-list-header><h1>Puerta</h1></ion-list-header>
+    <ion-list-header><h2>Puertas</h2></ion-list-header>
 
     <ion-item-sliding>
       <ion-item>
         <ion-avatar slot="start">
           <img src="../../assets/door_opened.png" />
         </ion-avatar>
-        <ion-label>
-          <h2>Puerta 1</h2>
-          <ion-text color="{{colorP1}}">
-            <h3>{{estado1}}</h3>
-          </ion-text>
-        </ion-label>
-        <ion-button color="success">Abrir</ion-button>
+        <ion-label>Puerta 1</ion-label>
+        <ion-button color="success" (click)="abrirESP1()">Abrir</ion-button>
       </ion-item>
       <ion-item-options side="start">
-        <ion-item-option color="primary">Abrir y Cerrar</ion-item-option>
+        <ion-item-option color="primary" (click)="abrirCerrarESP1()">Abrir y Cerrar</ion-item-option>
       </ion-item-options>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger">Cerrar</ion-item-option>
+        <ion-item-option color="danger" (click)="cerrarESP1()">Cerrar</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
 
@@ -37,20 +37,15 @@
         <ion-avatar slot="start">
           <img src="../../assets/door_opened.png" />
         </ion-avatar>
-        <ion-label>
-          <h2>Puerta 2</h2>
-          <ion-text color="{{colorP3}}">
-            <h3>{{estado2}}</h3>
-          </ion-text>
-        </ion-label>
-        <ion-button color="success">Abrir</ion-button>
+        <ion-label>Puerta 2</ion-label>
+        <ion-button color="success" (click)="abrirESP2()">Abrir</ion-button>
       </ion-item>
       <ion-item-options side="start">
-        <ion-item-option color="primary">Abrir y Cerrar</ion-item-option>
+        <ion-item-option color="primary" (click)="abrirCerrarESP2()">Abrir y Cerrar</ion-item-option>
       </ion-item-options>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger">Cerrar</ion-item-option>
+        <ion-item-option color="danger" (click)="cerrarESP2()">Cerrar</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
 
@@ -59,20 +54,15 @@
         <ion-avatar slot="start">
           <img src="../../assets/door_opened.png" />
         </ion-avatar>
-        <ion-label>
-          <h2>Puerta 3</h2>
-          <ion-text color="{{colorP3}}">
-            <h3>{{estado3}}</h3>
-          </ion-text>
-        </ion-label>
-        <ion-button color="success">Abrir</ion-button>
+        <ion-label>Puerta 3</ion-label>
+        <ion-button color="success" (click)="abrirESP3()">Abrir</ion-button>
       </ion-item>
       <ion-item-options side="start">
-        <ion-item-option color="primary">Abrir y Cerrar</ion-item-option>
+        <ion-item-option color="primary" (click)="abrirCerrarESP3()">Abrir y Cerrar</ion-item-option>
       </ion-item-options>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger">Cerrar</ion-item-option>
+        <ion-item-option color="danger" (click)="cerrarESP3()">Cerrar</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
 
@@ -81,20 +71,15 @@
         <ion-avatar slot="start">
           <img src="../../assets/door_opened.png" />
         </ion-avatar>
-        <ion-label>
-          <h2>Puerta 4</h2>
-          <ion-text color="{{colorP4}}">
-            <h3>{{estado4}}</h3>
-          </ion-text>
-        </ion-label>
-        <ion-button color="success">Abrir</ion-button>
+        <ion-label>Puerta 4</ion-label>
+        <ion-button color="success" (click)="abrirESP4()">Abrir</ion-button>
       </ion-item>
       <ion-item-options side="start">
-        <ion-item-option color="primary">Abrir y Cerrar</ion-item-option>
+        <ion-item-option color="primary" (click)="abrirCerrarESP4()">Abrir y Cerrar</ion-item-option>
       </ion-item-options>
 
       <ion-item-options side="end">
-        <ion-item-option color="danger">Cerrar</ion-item-option>
+        <ion-item-option color="danger" (click)="cerrarESP4()">Cerrar</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
