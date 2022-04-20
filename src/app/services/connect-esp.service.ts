@@ -10,29 +10,6 @@ import { ToastController } from '@ionic/angular';
 export class ConnectESPService {
 
   constructor(public toastController: ToastController) { }
-/*
-  post(ip){
-    const options = {
-      url: ''+ip,
-      headers: {},
-      params: { size: 'XL' },
-    };
-
-    const response: HttpResponse = await Http.get(options);
-  }
-
-  post1(ip){
-    return new Promise(resolve=>{
-      console.log('try to get ESP32 '+ ip);
-      this.http.get('http://'+ip).subscribe(data=>{
-          resolve(data);
-          console.log('data: '+data);
-      },error=>{
-        console.log(error);
-      });
-    });
-  }
-*/
   post(ip){
     Http.request({
 
@@ -43,6 +20,16 @@ export class ConnectESPService {
     },
       params:{},
       url : 'http://'+ip
+    })
+    .then(response => {
+      // prints 200
+      console.log('response data: ' + response.data);
+      this.showToast(response.data);
+    })
+    .catch(response => {
+      // prints 403
+      console.log('response status ' + response.status);
+      this.showToast('No se ha encontrado este dispositivo');
     });
   }
 
@@ -75,22 +62,4 @@ export class ConnectESPService {
     });
     toast.present();
   }
-  /*
-  post(ip){
-    console.log('try to get ESP32 '+ ip);
-    this.http.get('http://'+ip, {}, {}).then(data => {
-
-      console.log(data.status);
-      console.log(data.data); // data received by server
-      console.log(data.headers);
-
-    })
-    .catch(error => {
-
-      console.log(error.status);
-      console.log(error.error); // error message as string
-      console.log(error.headers);
-
-    });
-  }*/
 }

@@ -9,20 +9,12 @@ import { Storage } from '@ionic/storage';
 })
 export class Tab1Page {
 
+  ipPuerta1;
+  ipPuerta2;
+  ipPuerta3;
+  ipPuerta4;
   constructor(public sendSignal: ConnectESPService,public storage: Storage) {}
-  ipPuerta1
-  ipPuerta2
-  ipPuerta3
-  ipPuerta4
 
-  estado1 = "Abierta"
-  colorP1 = ""
-  estado2 = "Abierta"
-  colorP2 = ""
-  estado3 = "Abierta"
-  colorP3 = ""
-  estado4 = "Abierta"
-  colorP4 = ""
   //Abrir puertas
   abrirESP1(){
     this.sendSignal.post(this.ipPuerta1+'/openDoor');
@@ -65,28 +57,6 @@ export class Tab1Page {
   }
   cerrarESP4(){
     this.sendSignal.post(this.ipPuerta4+'/closeDoor');
-  }
-  ngOnInit(){
-    if(this.estado1=="Abierta"){
-      this.colorP1 = "success"
-    }else{
-      this.colorP1 = "danger"
-    }
-    if(this.estado2=="Abierta"){
-      this.colorP2 = "success"
-    }else{
-      this.colorP3 = "danger"
-    }
-    if(this.estado3=="Abierta"){
-      this.colorP3 = "success"
-    }else{
-      this.colorP4 = "danger"
-    }
-    if(this.estado4=="Abierta"){
-      this.colorP4 = "success"
-    }else{
-      this.colorP1 = "danger"
-    }
   }
   ionViewDidEnter() {
     this.storage.get('ippuerta1').then(res => {
