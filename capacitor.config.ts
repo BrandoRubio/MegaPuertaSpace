@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'MegaPuertaSpace',
+  appId: 'com.condor.megapuerta',
+  appName: 'Mega Puerta',
   webDir: 'www',
   bundledWebRuntime: false
 };

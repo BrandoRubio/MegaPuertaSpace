@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "MegaPuertaSpace",
+	"appId": "com.condor.megapuerta",
+	"appName": "Mega Puerta",
 	"webDir": "www",
 	"bundledWebRuntime": false
 }

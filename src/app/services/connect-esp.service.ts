@@ -3,14 +3,15 @@ import { Injectable } from '@angular/core';
 //import { HTTP } from '@ionic-native/http/ngx';
 import { Http } from '@capacitor-community/http';
 import { ToastController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConnectESPService {
 
-  constructor(public toastController: ToastController) { }
-  post(ip){
+  constructor(public storage: Storage, public toastController: ToastController) { }
+  post(ip, door){
     Http.request({
 
       method: 'GET',
@@ -24,16 +25,16 @@ export class ConnectESPService {
     .then(response => {
       // prints 200
       console.log('response data: ' + response.data);
-      this.showToast(response.data);
+      this.showToast(door + ': ' +response.data);
     })
     .catch(response => {
       // prints 403
       console.log('response status ' + response.status);
-      this.showToast('No se ha encontrado este dispositivo');
+      this.showToast('No se ha encontrado el dispositivo de '+ door);
     });
   }
 
-  check(ip){
+  check(ip,p){
     Http.request({
 
       method: 'GET',
@@ -42,16 +43,17 @@ export class ConnectESPService {
                 'Access-Control-Allow-Headers' : 'Authorization, Origin, X-Requested-With, Content-Type, Accept'
     },
       params:{},
-      url : 'http://'+ip
+      url : 'http://'+ip+'/check'
     })
     .then(response => {
       // prints 200
-      console.log('response data: ' + response.data);
+      //console.log('response data: ' + response.data);
       this.showToast(response.data);
+      this.storage.set(p, ip);
     })
     .catch(response => {
       // prints 403
-      console.log('response status ' + response.status);
+      //console.log('response status ' + response.status);
       this.showToast('No se ha encontrado la IP de este dispositivo');
     });
   }
