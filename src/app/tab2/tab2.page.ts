@@ -1,22 +1,21 @@
 import { Component } from '@angular/core';
-import { Storage } from '@ionic/storage';
 import { ConnectESPService } from '../services/connect-esp.service';
-import { AlertController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+import { ConfigPage } from '../modals/config/config.page';
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  styleUrls: ['tab2.page.scss'],
 })
 export class Tab2Page {
-
-  ipPuerta1;
-  ipPuerta2;
-  ipPuerta3;
-  ipPuerta4;
+  passwordSp = 'ARSpace';
+  passwordCh = '';
   darkMode = false;
-  password = 'Space';
-  constructor(public storage: Storage, public checkESP: ConnectESPService,public alertCtrl: AlertController) {
+  constructor(
+    public checkESP: ConnectESPService,
+    public modalController: ModalController
+  ) {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     this.darkMode = prefersDark.matches;
   }
@@ -24,29 +23,38 @@ export class Tab2Page {
     this.darkMode = !this.darkMode;
     document.body.classList.toggle('dark');
   }
-  checkIP(ip,p){
-    this.checkESP.check(ip,p);
-  }
   ionViewDidEnter() {
-    //this.presentAlert();
-    this.storage.get('ippuerta1').then(res => {
-      this.ipPuerta1 = res;
-    });
-    this.storage.get('ippuerta2').then(res => {
-      this.ipPuerta2 = res;
-    });
-    this.storage.get('ippuerta3').then(res => {
-      this.ipPuerta3 = res;
-    });
-    this.storage.get('ippuerta4').then(res => {
-      this.ipPuerta4 = res;
-    });
+    this.passwordCh = '';
   }
+
+  checkPassword() {
+    if (this.passwordCh === '') {
+      this.checkESP.showToast('Ingresa la palabra clave');
+    } else if (this.passwordCh === this.passwordSp) {
+      this.checkESP.showToast('La palabra clave es correcta');
+      this.openModal();
+    } else {
+      this.checkESP.showToast('Palabra clave incorrecta');
+    }
+  }
+
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: ConfigPage,
+    });
+
+    modal.onDidDismiss().then(() => {
+      this.passwordCh = '';
+    });
+
+    return await modal.present();
+  }
+  /*
   async presentAlert() {
     const alert  = await this.alertCtrl.create({
     header: 'Configuración',
     message: 'Ingresa la clave de seguridad para realizar ajustes en las IP de los dispositivos',
-    backdropDismiss: true,
+    backdropDismiss: false,
     inputs: [
       {
         name: 'clave',
@@ -77,7 +85,7 @@ export class Tab2Page {
   });
   await alert.present();
   }
-/*
+
   ionViewWillLeave() {
     this.storage.set('ippuerta1', this.ipPuerta1);
     this.storage.set('ippuerta2', this.ipPuerta2);

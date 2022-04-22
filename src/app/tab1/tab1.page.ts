@@ -3,6 +3,10 @@ import { ConnectESPService } from '../services/connect-esp.service';
 import { Storage } from '@ionic/storage';
 import { Network } from '@capacitor/network';
 import { PluginListenerHandle } from '@capacitor/core';
+import { IonRouterOutlet, Platform } from '@ionic/angular';
+import { Plugins } from '@capacitor/core';
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const { App } = Plugins;
 
 @Component({
   selector: 'app-tab1',
@@ -17,12 +21,23 @@ export class Tab1Page {
   networkStatus: any;
   networkListener: PluginListenerHandle;
   wifiMode = '';
-  constructor(public sendSignal: ConnectESPService, public storage: Storage) {}
+  constructor(
+    private platform: Platform,
+    private routerOutlet: IonRouterOutlet,
+    public sendSignal: ConnectESPService,
+    public storage: Storage
+  ) {
+    this.platform.backButton.subscribeWithPriority(-1, () => {
+      if (!this.routerOutlet.canGoBack()) {
+        App.minimizeApp();
+      }
+    });
+  }
   //Abrir puertas
   async esp1(method) {
     if ((await this.getNetWorkStatus()) === 'wifi') {
       this.sendSignal.post(this.ipPuerta1 + '/' + method, 'Puerta 1');
-    }else{
+    } else {
       this.sendSignal.showToast('No está conectado a una red Wi-Fi');
     }
     //console.log('try to open esp '+ this.ipPuerta1);
@@ -30,7 +45,7 @@ export class Tab1Page {
   async esp2(method) {
     if ((await this.getNetWorkStatus()) === 'wifi') {
       this.sendSignal.post(this.ipPuerta2 + '/' + method, 'Puerta 2');
-    }else{
+    } else {
       this.sendSignal.showToast('No está conectado a una red Wi-Fi');
     }
     //console.log('try to open esp '+ this.ipPuerta2);
@@ -38,7 +53,7 @@ export class Tab1Page {
   async esp3(method) {
     if ((await this.getNetWorkStatus()) === 'wifi') {
       this.sendSignal.post(this.ipPuerta3 + '/' + method, 'Puerta 3');
-    }else{
+    } else {
       this.sendSignal.showToast('No está conectado a una red Wi-Fi');
     }
     //console.log('try to open esp '+ this.ipPuerta3);
@@ -46,7 +61,7 @@ export class Tab1Page {
   async esp4(method) {
     if ((await this.getNetWorkStatus()) === 'wifi') {
       this.sendSignal.post(this.ipPuerta4 + '/' + method, 'Puerta 4');
-    }else{
+    } else {
       this.sendSignal.showToast('No está conectado a una red Wi-Fi');
     }
     //console.log('try to open esp '+ this.ipPuerta4);

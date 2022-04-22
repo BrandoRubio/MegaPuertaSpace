@@ -11,40 +11,31 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-no-marging">
   <ion-list>
-    <ion-list-header>IP de los dispositivos</ion-list-header>
-    <ion-item lines="full" [counter]="true">
-      <ion-label position="fixed">IP Puerta 1</ion-label>
-      <ion-input maxlength="15" placeholder="ej. 192.168.1.2" value="{{ipPuerta1}}"
-        [(ngModel)]="ipPuerta1"></ion-input>
-      <ion-button color="success" shape="round" (click)="checkIP(ipPuerta1,'ippuerta1')">
-        <ion-icon name="checkmark-outline"></ion-icon>
-      </ion-button>
+    <ion-item lines="full">
+      <ion-icon slot="start" name="moon"></ion-icon>
+      <ion-label>Modo Oscuro</ion-label>
+      <ion-toggle slot="end" [ngModel]="darkMode" (ionChange)="changeMode()"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-text color="primary">
+        <h4>
+          <ion-label class="ion-text-wrap">Para cambiar la configuración de los dispositos
+            ingresa la clave de seguridad.
+          </ion-label>
+        </h4>
+      </ion-text>
     </ion-item>
     <ion-item lines="full" [counter]="true">
-      <ion-label position="fixed">IP Puerta 2</ion-label>
-      <ion-input maxlength="15" placeholder="ej. 192.168.1.3" value="{{ipPuerta2}}"
-        [(ngModel)]="ipPuerta2"></ion-input>
-      <ion-button color="success" shape="round" (click)="checkIP(ipPuerta2,'ippuerta2')">
-        <ion-icon name="checkmark-outline"></ion-icon>
-      </ion-button>
-    </ion-item>
-    <ion-item lines="full" [counter]="true">
-      <ion-label position="fixed">IP Puerta 3</ion-label>
-      <ion-input maxlength="15" placeholder="ej. 192.168.1.4" value="{{ipPuerta3}}"
-        [(ngModel)]="ipPuerta3"></ion-input>
-      <ion-button color="success" shape="round" (click)="checkIP(ipPuerta3,'ippuerta3')">
-        <ion-icon name="checkmark-outline"></ion-icon>
-      </ion-button>
-    </ion-item>
-    <ion-item lines="full" [counter]="true">
-      <ion-label position="fixed">IP Puerta 4</ion-label>
-      <ion-input maxlength="15" placeholder="ej. 192.168.1.5" value="{{ipPuerta4}}"
-        [(ngModel)]="ipPuerta4"></ion-input>
-      <ion-button color="success" shape="round" (click)="checkIP(ipPuerta4,'ippuerta4')">
-        <ion-icon name="checkmark-outline"></ion-icon>
-      </ion-button>
+      <ion-label position="stacked">Clave de seguridad</ion-label>
+      <ion-input maxlength="15" type="password" placeholder="password" value="{{passwordCh}}" [(ngModel)]="passwordCh">
+      </ion-input>
     </ion-item>
   </ion-list>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button color="success" (click)="checkPassword()">
+      <ion-icon name="checkmark-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
